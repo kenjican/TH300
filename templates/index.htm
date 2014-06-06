@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="../static/jquery-1.11.0.min.js"></script>
+<script src="../static/getvalue.js"></script>
+</head>
+
+<body>
+<button type="button" id="run" style="font-size:80px"  onclick="run()">运转</button>&nbsp&nbsp&nbsp&nbsp<button type="button" 
+id="stop" style="font-size:80px" onclick="stop()">停止</button>
+<table boarder="0" cellpadding="0" cellspacing="0" style="width:100%;">
+<tr><td></td><td style="font-size:120px;color=red;width:40%">温度</td><td style="font-size:120px;color:blue;width:40%">湿度</td></tr>
+<tr><td style="font-size:40px;width:20%">PV</td><td style="font-size:80px;color:red" id="TPV"></td><td style="font-size:80px;color:blue" id="HPV"></td></tr>
+<tr><td style="font-size:40px">目标SV</td><td style="font-size:60px;color:red" id="TSV"></td><td style="font-size:60px;color:blue" id="HSV"></td></tr>
+<tr><td style="font-size:40px">控制输出</td><td style="font-size:60px;color:red" id="TMV"></td><td style="font-size:60px;color:blue" id="HMV"></td></tr>
+</table>
+<table>
+<tr id="TS"><td style="font-size:40px">TS</td><td style="font-size:40px;width:30px;color:blue">1</td><td style="font-size:40px;width:10%;color:blue">2</td><td style="font-size:40px;width:10%;color:blue">3</td><td style="font-size:40px;width:30px;color:blue">4</td><td style="font-size:40px;width:30px;color:blue">5</td><td style="font-size:40px;width:30px;color:blue">6</td><td style="font-size:40px;width:30px;color:blue">7</td><td style="font-size:40px;width:30px;color:blue">8</td></tr>
+
+<tr id="IS"><td style="font-size:40px">IS</td><td style="font-size:40px;width:30px;color:blue">1</td><td style="font-size:40px;width:10%;color:blue">2</td><td style="font-size:40px;width:10%;color:blue">3</td><td style="font-size:40px;width:30px;color:blue">4</td><td style="font-size:40px;width:30px;color:blue">5</td><td style="font-size:40px;width:30px;color:blue">6</td><td style="font-size:40px;width:30px;color:blue">7</td><td style="font-size:40px;width:30px;color:blue">8</td></tr>
+</table>
+</body>
+</html>
