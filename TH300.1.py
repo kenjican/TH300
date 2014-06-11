@@ -3,7 +3,7 @@
 #import threading
 import thread
 import serial, time
-from flask import Flask, render_template, make_response
+from flask import Flask, render_template, make_response, request
 from httplib2 import Http
 from struct import unpack
 #from flask.ext.autoindex import AutoIndex
@@ -89,6 +89,17 @@ def getv():
         getv()
 
 
+@app.route('/test/<username>')
+def testuser(username):
+    return username
+
+@app.route('/WriteS',methods=['POST'])
+def WrS():
+    WriteSingle = request.data
+    ser.write(WriteSingle)
+    r = ser.read()
+    #print WriteSingle[4]
+    return str(len(WriteSingle))
 
 @app.route('/run')
 def run():

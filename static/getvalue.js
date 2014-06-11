@@ -1,6 +1,8 @@
 var xmlhttp;
+var xmlhttpC;
 var IS = 0;
 var TS = 0;
+var CRCCal = new Uint8Array(8);
 if (window.XMLHttpRequest)
   {
     xmlhttp = new XMLHttpRequest();
@@ -130,7 +132,58 @@ xmlhttp.onreadystatechange = function()
         }        
       }
   }
+function MakeWS(address,temp)
+{
+
+  address = address.toString(16);
+  temp = temp.toString(16);
+  //var CRCCal = new Uint8Array(8);
+
+  CRCCal[0] = 1;
+  CRCCal[1] = 6;
+  CRCCal[2] = parseInt(address.substring(0,2),16);
+  CRCCal[3] = parseInt(address.substring(2,4),16);
+  CRCCal[4] = parseInt(temp.substring(0,2),16);
+  CRCCal[5] = parseInt(temp.substring(2,4),16);
+  GetCRC();
+  //GetCRC(CRCCal);
+}
+
+
+function GetCRC()
+{
+  var CRC = 0xffff;
+  var XorConst = 0xA001;
+
+  for(i=0;i<=CRCCal.byteLength-3;i++)
+{
+  CRC = CRC ^ CRCCal[i];
+  for(j=0;j<=7;j++)
+  {
+    if (CRC % 2 == 0)
+    {
+        CRC = CRC / 2;
+    }
+
+    else
+    {
+        CRC = (CRC -1) /2;
+        CRC = CRC ^ XorConst;
+    }
+  }
+
+}
+CRCCal[7] = parseInt(CRC.toString(16).substring(0,2),16);
+CRCCal[6] = parseInt(CRC.toString(16).substring(2,4),16);
+
+//alert(CRCCal.length);
+
+xmlhttpC.open("POST","/WriteS",true);
+xmlhttpC.responseType = "arraybuffer";
+//xmlhttpC.overrideMimeType('text/plain; charset=x-user-defined-binary')
+xmlhttpC.send(CRCCal);
+}
 
 //getvalue();
 
-setInterval(function(){getvalue()},1000);
+setInterval(function(){getvalue()},5000);
