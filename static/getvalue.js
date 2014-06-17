@@ -115,7 +115,7 @@ xmlhttp.onreadystatechange = function()
       {
         var v = new DataView(xmlhttp.response);
         $("#TPV").html((v.getUint16(5,false)/100-100).toFixed(2));
-        $("#TSV").html((v.getUint16(3,false)/100-100).toFixed(2));
+        $("#TxtTSV").val((v.getUint16(3,false)/100-100).toFixed(2));
         $("#TMV").html((v.getUint16(7,false)/100).toFixed(2));
         $("#HSV").html((v.getUint16(9,false)/10).toFixed(1));
         $("#HPV").html((v.getUint16(11,false)/10).toFixed(1));
@@ -138,7 +138,6 @@ function MakeWS(address,temp)
   address = address.toString(16);
   temp = temp.toString(16);
   //var CRCCal = new Uint8Array(8);
-
   CRCCal[0] = 1;
   CRCCal[1] = 6;
   CRCCal[2] = parseInt(address.substring(0,2),16);

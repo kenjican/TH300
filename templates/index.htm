@@ -11,8 +11,12 @@
 id="stop" style="font-size:80px" onclick="stop()">停止</button>
 <table boarder="0" cellpadding="0" cellspacing="0" style="width:100%;">
 <tr><td></td><td style="font-size:120px;color=red;width:40%">温度</td><td style="font-size:120px;color:blue;width:40%">湿度</td></tr>
-<tr><td style="font-size:40px;width:20%">PV</td><td style="font-size:80px;color:red" id="TPV"></td><td style="font-size:80px;color:blue" id="HPV"></td></tr>
-<tr><td style="font-size:40px">目标SV</td><td style="font-size:60px;color:red" id="TSV"></td><td style="font-size:60px;color:blue" id="HSV"></td></tr>
+<tr><td style="font-size:40px;width:20%">PV</td><td
+    style="font-size:80px;color:red" id="TPV"></td><td style="font-size:80px;color:blue" id="HPV"></td></tr>
+<tr><td style="font-size:40px">目标SV</td><td><input type="text" id = "TxtTSV"
+    onkeypress="if(event.keyCode == 13){ MakeWS(40012,(parseFloat(this.value) +
+    100)*100);}"
+    onblur="MakeWS(40012,(parseFloat(this.value)+100)*100);"></input></td><td style="font-size:60px;color:blue" id="HSV"></td></tr>
 <tr><td style="font-size:40px">控制输出</td><td style="font-size:60px;color:red" id="TMV"></td><td style="font-size:60px;color:blue" id="HMV"></td></tr>
 </table>
 <table>

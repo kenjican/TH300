@@ -166,6 +166,6 @@ sched.add_interval_job(RecordData,seconds=5)
 '''
 
 if __name__=='__main__':
-    app.run('0.0.0.0',port=80,debug=True)
+    app.run('0.0.0.0',port=8080,debug=True)
     #thread.start_new_thread(getv,(0.2,)) 
     #sched.add_interval_job(getv,seconds=1)
